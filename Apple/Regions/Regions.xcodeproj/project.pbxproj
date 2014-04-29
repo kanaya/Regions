@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF50C36F190F427500A5A91A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF50C36E190F427500A5A91A /* Default-568h@2x.png */; };
 		CBA9F15312F76264005BB61E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA9F15212F76264005BB61E /* UIKit.framework */; };
 		CBA9F15512F76264005BB61E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA9F15412F76264005BB61E /* Foundation.framework */; };
 		CBA9F15712F76264005BB61E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA9F15612F76264005BB61E /* CoreGraphics.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF50C36E190F427500A5A91A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CBA9F14E12F76264005BB61E /* Regions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Regions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA9F15212F76264005BB61E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CBA9F15412F76264005BB61E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,7 @@
 		CBA9F14312F76263005BB61E = {
 			isa = PBXGroup;
 			children = (
+				BF50C36E190F427500A5A91A /* Default-568h@2x.png */,
 				CBBF867212FB498900508BCE /* ReadMe.txt */,
 				CBA9F15812F76264005BB61E /* Regions */,
 				CBA9F15112F76264005BB61E /* Frameworks */,
@@ -181,6 +184,7 @@
 		CBA9F14512F76263005BB61E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Apple Inc.";
 			};
 			buildConfigurationList = CBA9F14812F76263005BB61E /* Build configuration list for PBXProject "Regions" */;
@@ -218,6 +222,7 @@
 				CBBE14F212F914B70065507D /* iTunesArtwork in Resources */,
 				CBBE14F312F914B70065507D /* RemoveRegion.png in Resources */,
 				CBBE14F412F914B70065507D /* RemoveRegion@2x.png in Resources */,
+				BF50C36F190F427500A5A91A /* Default-568h@2x.png in Resources */,
 				CBBE14F812F916EC0065507D /* Default@2x.png in Resources */,
 				CBBF867312FB498900508BCE /* ReadMe.txt in Resources */,
 			);
@@ -271,14 +276,14 @@
 		CBA9F16D12F76264005BB61E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -286,12 +291,11 @@
 		CBA9F16E12F76264005BB61E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
@@ -306,8 +310,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Regions/Regions-Prefix.pch";
 				INFOPLIST_FILE = "Regions/Regions-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -320,8 +325,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Regions/Regions-Prefix.pch";
 				INFOPLIST_FILE = "Regions/Regions-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
