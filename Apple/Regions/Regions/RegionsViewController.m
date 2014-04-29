@@ -49,6 +49,8 @@
 #import "RegionAnnotationView.h"
 #import "RegionAnnotation.h"
 
+#import "Konashi.h"
+
 @implementation RegionsViewController
 
 @synthesize regionsMapView, updatesTableView, updateEvents, locationManager, navigationBar;
@@ -73,7 +75,7 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 	
 	// Create empty array to add region events to.
 	updateEvents = [[NSMutableArray alloc] initWithCapacity:0];
@@ -86,6 +88,10 @@
 	
 	// Start updating location changes.
 	[locationManager startUpdatingLocation];
+  
+  [Konashi initialize];
+  [Konashi addObserver:self selector:@selector(ready) name:KONASHI_EVENT_READY];
+
 }
 
 
@@ -344,6 +350,17 @@
 		[updatesTableView reloadData];
 	}
 }
+
+- (IBAction)connectToKonashi: (id)sender {
+  [Konashi find];
+}
+
+- (void)ready {
+  [Konashi pinMode: LED2 mode: OUTPUT];
+  [Konashi digitalWrite: LED2 value: HIGH];
+}
+
+
 
 
 @end

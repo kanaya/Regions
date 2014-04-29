@@ -423,7 +423,7 @@
     BOOL targetIsExist = NO;
     int indexOfTarget = 0;
     if ( [peripherals count] > 0 ) {
-        for (NSUInteger i = 0; i < [peripherals count]; i++) {
+        for (int i = 0; i < [peripherals count]; i++) {
             if ([[[peripherals objectAtIndex:i] name] isEqualToString:targetname]) {
                 targetIsExist = YES;
                 indexOfTarget = i;
@@ -1226,7 +1226,7 @@
 {
     NSString *module[64];
     
-    for(NSUInteger i = 0; i < peripherals.count; i++) {
+    for(int i = 0; i < peripherals.count; i++) {
         CBPeripheral *p = [peripherals objectAtIndex:i];
         module[i] = p.name;
     }
@@ -1449,7 +1449,7 @@
 
 -(void) getAllCharacteristicsFromMoudle:(CBPeripheral *)p
 {
-    for (NSUInteger i=0; i < p.services.count; i++) {
+    for (int i=0; i < p.services.count; i++) {
         CBService *s = [p.services objectAtIndex:i];
         KNS_LOG(@"Fetching characteristics for service with UUID : %@", [self CBUUIDToString:s.UUID]);
         [p discoverCharacteristics:nil forService:s];
@@ -1504,7 +1504,7 @@
 
 - (CBService*) findServiceFromUUID:(CBUUID *)UUID p:(CBPeripheral *)p
 {
-    for(NSUInteger i = 0; i < p.services.count; i++) {
+    for(int i = 0; i < p.services.count; i++) {
         CBService *s = [p.services objectAtIndex:i];
         if ([self compareCBUUID:s.UUID UUID2:UUID]) return s;
     }
@@ -1513,7 +1513,7 @@
 
 - (CBCharacteristic *) findCharacteristicFromUUID:(CBUUID *)UUID service:(CBService*)service
 {
-    for(NSUInteger i=0; i < service.characteristics.count; i++) {
+    for(int i=0; i < service.characteristics.count; i++) {
         CBCharacteristic *c = [service.characteristics objectAtIndex:i];
         if ([self compareCBUUID:c.UUID UUID2:UUID]) return c;
     }

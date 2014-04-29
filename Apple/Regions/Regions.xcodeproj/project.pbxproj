@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF50C36F190F427500A5A91A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF50C36E190F427500A5A91A /* Default-568h@2x.png */; };
+		BF50C371190F6FFA00A5A91A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF50C370190F6FFA00A5A91A /* CoreBluetooth.framework */; };
+		BF50C456190F991E00A5A91A /* Konashi.m in Sources */ = {isa = PBXBuildFile; fileRef = BF50C454190F991E00A5A91A /* Konashi.m */; };
 		CBA9F15312F76264005BB61E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA9F15212F76264005BB61E /* UIKit.framework */; };
 		CBA9F15512F76264005BB61E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA9F15412F76264005BB61E /* Foundation.framework */; };
 		CBA9F15712F76264005BB61E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA9F15612F76264005BB61E /* CoreGraphics.framework */; };
@@ -37,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		BF50C36E190F427500A5A91A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BF50C370190F6FFA00A5A91A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BF50C453190F991E00A5A91A /* Konashi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Konashi.h; sourceTree = SOURCE_ROOT; };
+		BF50C454190F991E00A5A91A /* Konashi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Konashi.m; sourceTree = SOURCE_ROOT; };
+		BF50C455190F991E00A5A91A /* KonashiDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonashiDb.h; sourceTree = SOURCE_ROOT; };
 		CBA9F14E12F76264005BB61E /* Regions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Regions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA9F15212F76264005BB61E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CBA9F15412F76264005BB61E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF50C371190F6FFA00A5A91A /* CoreBluetooth.framework in Frameworks */,
 				CBA9F17512F76292005BB61E /* MapKit.framework in Frameworks */,
 				CBA9F17312F7628B005BB61E /* CoreLocation.framework in Frameworks */,
 				CBA9F15312F76264005BB61E /* UIKit.framework in Frameworks */,
@@ -87,9 +94,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF50C37C190F729200A5A91A /* Konashi */ = {
+			isa = PBXGroup;
+			children = (
+				BF50C453190F991E00A5A91A /* Konashi.h */,
+				BF50C454190F991E00A5A91A /* Konashi.m */,
+				BF50C455190F991E00A5A91A /* KonashiDb.h */,
+			);
+			path = Konashi;
+			sourceTree = "<group>";
+		};
 		CBA9F14312F76263005BB61E = {
 			isa = PBXGroup;
 			children = (
+				BF50C37C190F729200A5A91A /* Konashi */,
 				BF50C36E190F427500A5A91A /* Default-568h@2x.png */,
 				CBBF867212FB498900508BCE /* ReadMe.txt */,
 				CBA9F15812F76264005BB61E /* Regions */,
@@ -109,6 +127,7 @@
 		CBA9F15112F76264005BB61E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF50C370190F6FFA00A5A91A /* CoreBluetooth.framework */,
 				CBA9F17412F76292005BB61E /* MapKit.framework */,
 				CBA9F17212F7628B005BB61E /* CoreLocation.framework */,
 				CBA9F15212F76264005BB61E /* UIKit.framework */,
@@ -240,6 +259,7 @@
 				CBA9F16912F76264005BB61E /* RegionsViewController.m in Sources */,
 				CBA9F17D12F763D8005BB61E /* RegionAnnotation.m in Sources */,
 				CBA9F17E12F763D8005BB61E /* RegionAnnotationView.m in Sources */,
+				BF50C456190F991E00A5A91A /* Konashi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

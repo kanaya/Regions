@@ -21,6 +21,9 @@
 		BF50C438190F8E2300A5A91A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF50C41A190F8E2300A5A91A /* UIKit.framework */; };
 		BF50C440190F8E2300A5A91A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF50C43E190F8E2300A5A91A /* InfoPlist.strings */; };
 		BF50C442190F8E2300A5A91A /* RegionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF50C441190F8E2300A5A91A /* RegionsTests.m */; };
+		BF50C44C190F8E7300A5A91A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF50C44B190F8E7300A5A91A /* CoreBluetooth.framework */; };
+		BF50C44F190F8EA000A5A91A /* Konashi.m in Sources */ = {isa = PBXBuildFile; fileRef = BF50C44E190F8EA000A5A91A /* Konashi.m */; };
+		BF50C450190F8EA000A5A91A /* Konashi.m in Sources */ = {isa = PBXBuildFile; fileRef = BF50C44E190F8EA000A5A91A /* Konashi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,10 @@
 		BF50C43D190F8E2300A5A91A /* RegionsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegionsTests-Info.plist"; sourceTree = "<group>"; };
 		BF50C43F190F8E2300A5A91A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF50C441190F8E2300A5A91A /* RegionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegionsTests.m; sourceTree = "<group>"; };
+		BF50C44B190F8E7300A5A91A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BF50C44D190F8E8D00A5A91A /* Konashi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Konashi.h; sourceTree = "<group>"; };
+		BF50C44E190F8EA000A5A91A /* Konashi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Konashi.m; sourceTree = "<group>"; };
+		BF50C451190F8EAE00A5A91A /* KonashiDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonashiDb.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF50C44C190F8E7300A5A91A /* CoreBluetooth.framework in Frameworks */,
 				BF50C419190F8E2300A5A91A /* CoreGraphics.framework in Frameworks */,
 				BF50C41B190F8E2300A5A91A /* UIKit.framework in Frameworks */,
 				BF50C417190F8E2300A5A91A /* Foundation.framework in Frameworks */,
@@ -82,6 +90,7 @@
 		BF50C40A190F8E2300A5A91A = {
 			isa = PBXGroup;
 			children = (
+				BF50C452190F8EBE00A5A91A /* Konashi */,
 				BF50C41C190F8E2300A5A91A /* Regions */,
 				BF50C43B190F8E2300A5A91A /* RegionsTests */,
 				BF50C415190F8E2300A5A91A /* Frameworks */,
@@ -101,6 +110,7 @@
 		BF50C415190F8E2300A5A91A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF50C44B190F8E7300A5A91A /* CoreBluetooth.framework */,
 				BF50C416190F8E2300A5A91A /* Foundation.framework */,
 				BF50C418190F8E2300A5A91A /* CoreGraphics.framework */,
 				BF50C41A190F8E2300A5A91A /* UIKit.framework */,
@@ -150,6 +160,16 @@
 				BF50C43E190F8E2300A5A91A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF50C452190F8EBE00A5A91A /* Konashi */ = {
+			isa = PBXGroup;
+			children = (
+				BF50C44D190F8E8D00A5A91A /* Konashi.h */,
+				BF50C451190F8EAE00A5A91A /* KonashiDb.h */,
+				BF50C44E190F8EA000A5A91A /* Konashi.m */,
+			);
+			name = Konashi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF50C427190F8E2300A5A91A /* PRAppDelegate.m in Sources */,
+				BF50C44F190F8EA000A5A91A /* Konashi.m in Sources */,
 				BF50C42D190F8E2300A5A91A /* PRViewController.m in Sources */,
 				BF50C423190F8E2300A5A91A /* main.m in Sources */,
 			);
@@ -261,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF50C442190F8E2300A5A91A /* RegionsTests.m in Sources */,
+				BF50C450190F8EA000A5A91A /* Konashi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
