@@ -45,16 +45,23 @@
  
  */
 
+#import <CoreMotion/CoreMotion.h>
 #import "MapViewController.h"
 #import "PlacemarkViewController.h"
 #import "Konashi.h"
 
 @interface MapViewController ()
+{
+  CMMotionManager *_motionManager;
+  NSTimer *timer;
+}
 
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *getAddressButton;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) MKPlacemark *placemark;
+@property (nonatomic, strong) MKUserLocation *sharedUserLocation;
+@property BOOL iAmIn;
 
 @end
 
@@ -68,6 +75,14 @@ double distance(double x1, double y1, double x2, double y2) {
   double dx = x1 - x2;
   double dy = y1 - y2;
   return sqrt(dx * dx + dy * dy);
+}
+
+- (CMMotionManager *)sharedMotionManager {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _motionManager = [[CMMotionManager alloc] init];
+  });
+  return _motionManager;
 }
 
 - (IBAction)findKonashi: (id)sender {
@@ -93,13 +108,47 @@ double distance(double x1, double y1, double x2, double y2) {
   // do nothing
 }
 
-- (void)checkIAmInOrOut: (MKUserLocation *)userLocation {
+- (void)letMeBeInIfXIsHigh: (double)x {
+  // NSLog(@"x = %f", x);
+  if (x > 0.0) {
+    self.iAmIn = YES;
+  }
+  else {
+    self.iAmIn = NO;
+  }
+}
+
+- (void)checkIAmInOrOut {
+  MKUserLocation *userLocation = self.sharedUserLocation;
+  
   CLLocationDegrees latitude = userLocation.coordinate.latitude;
   CLLocationDegrees longitude = userLocation.coordinate.longitude;
   NSLog(@"My location is %f, %f", latitude, longitude);
   double d = distance(latitude, longitude, home_latitude, home_longitutde);
   NSLog(@"Distance from my home is %f", d);
+
+#if 0
   if (d < radius) {
+    self.iAmIn = YES;
+  }
+  else {
+    self.iAmIn = NO;
+  }
+#else
+  CMMotionManager *motionManager = [self sharedMotionManager];
+  MapViewController * __weak weakSelf = self;
+  if ([motionManager isAccelerometerAvailable] == YES) {
+    [motionManager setAccelerometerUpdateInterval: 0.1];
+    [motionManager startAccelerometerUpdatesToQueue: [NSOperationQueue mainQueue]
+                                        withHandler: ^(CMAccelerometerData *accelerometerData, NSError *error) {
+                                          [weakSelf letMeBeInIfXIsHigh: accelerometerData.acceleration.x];
+                                          // [weakSelf.graphView addX:accelerometerData.acceleration.x y:accelerometerData.acceleration.y z:accelerometerData.acceleration.z];
+                                          // [weakSelf setLabelValueX:accelerometerData.acceleration.x y:accelerometerData.acceleration.y z:accelerometerData.acceleration.z];
+                                        }];
+  }
+#endif
+  
+  if (self.iAmIn == YES) {
     // Raise up Konashi
     NSLog(@"I'm in.");
     [Konashi digitalWrite: LED3 value: HIGH];
@@ -114,8 +163,14 @@ double distance(double x1, double y1, double x2, double y2) {
   }
 }
 
+- (void)timerFire: (id)userInfo {
+  [self checkIAmInOrOut];
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  self.iAmIn = NO;
   
   [Konashi initialize];
 //  [Konashi addObserver: self
@@ -127,9 +182,13 @@ double distance(double x1, double y1, double x2, double y2) {
 //  [Konashi addObserver: self
 //              selector: @selector(updatePioInput)
 //                  name: KONASHI_EVENT_UPDATE_PIO_INPUT];
-  
-  
-	   
+
+  timer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                           target: self
+                                         selector: @selector(timerFire:)
+                                         userInfo: nil
+                                          repeats: YES];
+
 	// Create a geocoder and save it for later.
   self.geocoder = [[CLGeocoder alloc] init];
 }
@@ -153,7 +212,8 @@ double distance(double x1, double y1, double x2, double y2) {
 			[self.mapView setCenterCoordinate: userLocation.coordinate animated: YES];
 		});
     // Check I'm in or out (This code should be replaced by Region Monitoring)
-    [self checkIAmInOrOut: userLocation];
+    self.sharedUserLocation = userLocation;
+    [self checkIAmInOrOut];
 	}
 	
 	// Lookup the information for the current location of the user.

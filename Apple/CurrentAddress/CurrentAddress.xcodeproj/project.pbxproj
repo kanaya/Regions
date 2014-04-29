@@ -26,6 +26,7 @@
 		53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D3762C161F3AEF00BE0895 /* CoreLocation.framework */; };
 		BF50C382190F7EC400A5A91A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF50C381190F7EC400A5A91A /* CoreBluetooth.framework */; };
 		BF50C385190F807D00A5A91A /* Konashi.m in Sources */ = {isa = PBXBuildFile; fileRef = BF50C384190F807D00A5A91A /* Konashi.m */; };
+		BF50C458190FAEC800A5A91A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF50C457190FAEC800A5A91A /* CoreMotion.framework */; };
 		D0536A1C17CE746D00A97ABF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0536A1917CE746D00A97ABF /* Default-568h@2x.png */; };
 		D0536A1D17CE746D00A97ABF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0536A1A17CE746D00A97ABF /* Default.png */; };
 		D0536A1E17CE746D00A97ABF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0536A1B17CE746D00A97ABF /* Default@2x.png */; };
@@ -60,6 +61,7 @@
 		BF50C383190F807200A5A91A /* Konashi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Konashi.h; sourceTree = "<group>"; };
 		BF50C384190F807D00A5A91A /* Konashi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Konashi.m; sourceTree = "<group>"; };
 		BF50C386190F808600A5A91A /* KonashiDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonashiDb.h; sourceTree = "<group>"; };
+		BF50C457190FAEC800A5A91A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		D0536A1917CE746D00A97ABF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D0536A1A17CE746D00A97ABF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D0536A1B17CE746D00A97ABF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF50C458190FAEC800A5A91A /* CoreMotion.framework in Frameworks */,
 				BF50C382190F7EC400A5A91A /* CoreBluetooth.framework in Frameworks */,
 				53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -141,6 +144,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF50C457190FAEC800A5A91A /* CoreMotion.framework */,
 				BF50C381190F7EC400A5A91A /* CoreBluetooth.framework */,
 				53D3762C161F3AEF00BE0895 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
