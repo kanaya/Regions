@@ -47,6 +47,7 @@
 
 #import "MapViewController.h"
 #import "PlacemarkViewController.h"
+#import "Konashi.h"
 
 @interface MapViewController ()
 
@@ -59,12 +60,78 @@
 
 @implementation MapViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+CLLocationDegrees home_latitude = 34.824482;
+CLLocationDegrees home_longitutde = 135.434993;
+double radius = 0.01;
+
+double distance(double x1, double y1, double x2, double y2) {
+  double dx = x1 - x2;
+  double dy = y1 - y2;
+  return sqrt(dx * dx + dy * dy);
+}
+
+- (IBAction)findKonashi: (id)sender {
+  NSLog(@"Finding Konashi.");
+  [Konashi find];
+  NSLog(@"Ready.");
+}
+
+- (void)ready {
+  [Konashi pinMode: LED2 mode: OUTPUT];
+  [Konashi digitalWrite: LED2 value: HIGH];
+  
+  [Konashi pinMode: LED3 mode: OUTPUT];
+  [Konashi pinMode: LED4 mode: OUTPUT];
+  [Konashi pinMode: LED5 mode: OUTPUT];
+}
+
+- (void)disconnected {
+  // do nothing
+}
+
+- (void)updatePioInput {
+  // do nothing
+}
+
+- (void)checkIAmInOrOut: (MKUserLocation *)userLocation {
+  CLLocationDegrees latitude = userLocation.coordinate.latitude;
+  CLLocationDegrees longitude = userLocation.coordinate.longitude;
+  NSLog(@"My location is %f, %f", latitude, longitude);
+  double d = distance(latitude, longitude, home_latitude, home_longitutde);
+  NSLog(@"Distance from my home is %f", d);
+  if (d < radius) {
+    // Raise up Konashi
+    NSLog(@"I'm in.");
+    [Konashi digitalWrite: LED3 value: HIGH];
+    [Konashi digitalWrite: LED4 value: HIGH];
+    [Konashi digitalWrite: LED5 value: HIGH];
+  }
+  else {
+    NSLog(@"I'm out.");
+    [Konashi digitalWrite: LED3 value: LOW];
+    [Konashi digitalWrite: LED4 value: LOW];
+    [Konashi digitalWrite: LED5 value: LOW];
+  }
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  [Konashi initialize];
+//  [Konashi addObserver: self
+//              selector: @selector(disconnected)
+//                  name: KONASHI_EVENT_DISCONNECTED];
+  [Konashi addObserver: self
+              selector: @selector(ready)
+                  name: KONASHI_EVENT_READY];
+//  [Konashi addObserver: self
+//              selector: @selector(updatePioInput)
+//                  name: KONASHI_EVENT_UPDATE_PIO_INPUT];
+  
+  
 	   
 	// Create a geocoder and save it for later.
-    self.geocoder = [[CLGeocoder alloc] init];
+  self.geocoder = [[CLGeocoder alloc] init];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -77,30 +144,31 @@
     }
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-	// Center the map the first time we get a real location change.
-	static dispatch_once_t centerMapFirstTime;
+- (void)mapView: (MKMapView *)mapView didUpdateUserLocation: (MKUserLocation *)userLocation {
+  // Center the map the first time we get a real location change.
+  static dispatch_once_t centerMapFirstTime;
 
 	if ((userLocation.coordinate.latitude != 0.0) && (userLocation.coordinate.longitude != 0.0)) {
 		dispatch_once(&centerMapFirstTime, ^{
-			[self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+			[self.mapView setCenterCoordinate: userLocation.coordinate animated: YES];
 		});
+    // Check I'm in or out (This code should be replaced by Region Monitoring)
+    [self checkIAmInOrOut: userLocation];
 	}
 	
 	// Lookup the information for the current location of the user.
-    [self.geocoder reverseGeocodeLocation:self.mapView.userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
-		if ((placemarks != nil) && (placemarks.count > 0)) {
-			// If the placemark is not nil then we have at least one placemark. Typically there will only be one.
-			_placemark = [placemarks objectAtIndex:0];
-			
-			// we have received our current location, so enable the "Get Current Address" button
-			[self.getAddressButton setEnabled:YES];
-		}
-		else {
-			// Handle the nil case if necessary.
-		}
-    }];
+  [self.geocoder reverseGeocodeLocation: self.mapView.userLocation.location
+                      completionHandler: ^(NSArray *placemarks, NSError *error) {
+                        if ((placemarks != nil) && (placemarks.count > 0)) {
+                          // If the placemark is not nil then we have at least one placemark. Typically there will only be one.
+                          _placemark = [placemarks objectAtIndex: 0];
+                          // we have received our current location, so enable the "Get Current Address" button
+                          [self.getAddressButton setEnabled: YES];
+                          }
+                        else {
+                          // Handle the nil case if necessary.
+                        }
+                      }];
 }
 
 @end

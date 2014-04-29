@@ -49,6 +49,7 @@
 #import <MapKit/MapKit.h>
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
+- (IBAction)findKonashi: (id)sender;
 
 @end
 

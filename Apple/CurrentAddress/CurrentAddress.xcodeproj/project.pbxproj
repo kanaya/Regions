@@ -24,6 +24,8 @@
 		300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300A08551036093B009C9A1C /* PlacemarkViewController.m */; };
 		531978C116289A31009FACF4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 531978BF16289A31009FACF4 /* MainStoryboard.storyboard */; };
 		53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D3762C161F3AEF00BE0895 /* CoreLocation.framework */; };
+		BF50C382190F7EC400A5A91A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF50C381190F7EC400A5A91A /* CoreBluetooth.framework */; };
+		BF50C385190F807D00A5A91A /* Konashi.m in Sources */ = {isa = PBXBuildFile; fileRef = BF50C384190F807D00A5A91A /* Konashi.m */; };
 		D0536A1C17CE746D00A97ABF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0536A1917CE746D00A97ABF /* Default-568h@2x.png */; };
 		D0536A1D17CE746D00A97ABF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0536A1A17CE746D00A97ABF /* Default.png */; };
 		D0536A1E17CE746D00A97ABF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0536A1B17CE746D00A97ABF /* Default@2x.png */; };
@@ -54,6 +56,10 @@
 		531978C016289A31009FACF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
 		53D3762C161F3AEF00BE0895 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* CurrentAddress-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CurrentAddress-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		BF50C381190F7EC400A5A91A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BF50C383190F807200A5A91A /* Konashi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Konashi.h; sourceTree = "<group>"; };
+		BF50C384190F807D00A5A91A /* Konashi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Konashi.m; sourceTree = "<group>"; };
+		BF50C386190F808600A5A91A /* KonashiDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonashiDb.h; sourceTree = "<group>"; };
 		D0536A1917CE746D00A97ABF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D0536A1A17CE746D00A97ABF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D0536A1B17CE746D00A97ABF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF50C382190F7EC400A5A91A /* CoreBluetooth.framework in Frameworks */,
 				53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -108,6 +115,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				BF50C387190F808D00A5A91A /* Konashi */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF50C381190F7EC400A5A91A /* CoreBluetooth.framework */,
 				53D3762C161F3AEF00BE0895 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -140,6 +149,16 @@
 				300A082A10360561009C9A1C /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF50C387190F808D00A5A91A /* Konashi */ = {
+			isa = PBXGroup;
+			children = (
+				BF50C383190F807200A5A91A /* Konashi.h */,
+				BF50C384190F807D00A5A91A /* Konashi.m */,
+				BF50C386190F808600A5A91A /* KonashiDb.h */,
+			);
+			name = Konashi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +239,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */,
 				300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */,
+				BF50C385190F807D00A5A91A /* Konashi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

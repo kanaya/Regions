@@ -62,4 +62,6 @@
 - (IBAction)addRegion;
 - (void)updateWithEvent:(NSString *)event;
 
+- (IBAction)connectToKonashi: (id)sender;
+
 @end
