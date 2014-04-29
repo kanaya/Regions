@@ -128,6 +128,7 @@ double distance(double x1, double y1, double x2, double y2) {
   NSLog(@"Distance from my home is %f", d);
 
 #if 0
+  // USE THIS CODE FOR LOCATION-AWARE SWITCHING
   if (d < radius) {
     self.iAmIn = YES;
   }
@@ -135,6 +136,7 @@ double distance(double x1, double y1, double x2, double y2) {
     self.iAmIn = NO;
   }
 #else
+  // USE THIS CODE FOR DEMONSTRATION
   CMMotionManager *motionManager = [self sharedMotionManager];
   MapViewController * __weak weakSelf = self;
   if ([motionManager isAccelerometerAvailable] == YES) {
