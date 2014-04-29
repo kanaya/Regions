@@ -54,12 +54,13 @@
 
 @synthesize viewController;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+- (BOOL)application: (UIApplication *)application didFinishLaunchingWithOptions: (NSDictionary *)launchOptions {
+  // Override point for customization after application launch.
 	
+  [UIApplication sharedApplication].statusBarHidden = YES;  // didn't work?
 	self.window.rootViewController = self.viewController;
 	[self.window makeKeyAndVisible];
-    return YES;
+  return YES;
 }
 
 
@@ -130,7 +131,7 @@
 - (void)dealloc {
 	[window release];
 	[viewController release];
-    [super dealloc];
+  [super dealloc];
 }
 
 @end
